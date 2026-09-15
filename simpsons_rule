@@ -1,0 +1,23 @@
+## Simpson's Rule Integration
+def simpson(a,b,f,n):
+    if n%2 == 1:
+        n+=1
+    h = (b-a)/n
+    total = 0.0
+    area = 0.0
+    x_left = a
+    x_right = x_left + h
+    x_center = (x_right - x_left)/2
+    while x_right <= b:
+        total += h*(1/6*f(x_left) + 2/3*f(x_center) + 1/6*f(x_right))
+        x_left = x_right
+        x_right += h
+        x_center = (x_right + x_left)/2
+
+    return total
+
+def f_1(x):
+    return x*x + 7*x + 3
+
+if __name__ == "__main__":
+    print("Simpsons Rule:", simpson(5, 10, f_1, 6))

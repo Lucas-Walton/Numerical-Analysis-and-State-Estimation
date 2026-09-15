@@ -1,0 +1,10 @@
+def central_difference(f, x, h):
+    return (f(x+h) - f(x-h)) / (2*h)
+
+def f_1(x):
+    return x*x + 7*x + 3
+
+if __name__ == "__main__":
+    from machine_epsilon import machine_epsilon
+    h = 150 * machine_epsilon()
+    print("Central difference:", central_difference(f_1, 7, h))
